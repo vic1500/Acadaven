@@ -17,7 +17,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 shrink-0">
           <img
-            src="/assets/Acadaven-logo.png"
+            src="/assets/logo.png"
             alt="Acadaven"
             className="h-8 w-auto"
           />
