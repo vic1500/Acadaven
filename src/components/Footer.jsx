@@ -1,23 +1,16 @@
 import { Globe, Share2, Mail, ArrowRight } from 'lucide-react'
 import Global from "../../public/assets/global-reach-icon.png"
 import CertifiedQuality from "../../public/assets/certified-quality-icon.png"
-const courses = [
-  'Physics & Chemistry',
-  'Mathematics',
-  'Further Mathematics',
-  'English & Literature',
-]
 
-const company = ['About Us', 'Features', 'Exams', 'Tutors']
-
-export default function Footer() {
+const socialIcons = [Globe, Share2, Mail]
+export default function Footer({footerLinks, lastSection}) {
   return (
     <footer style={{ backgroundColor: '#1A744C' }}>
-      {/* Main footer grid */}
+      {/* Main footer flex */}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 gap-10">
-          {/* Brand column */}
-          <div className="flex flex-col gap-5">
+        <div className="flex w-full flex-col lg:flex-row justify-between items-start gap-10 lg:gap-5">
+          {/* Brand column - Extreme Left */}
+          <div className="flex flex-col gap-5 shrink-0">
             <span
               className="text-white font-bold text-xl tracking-wide"
               style={{ fontFamily: 'DM Sans, sans-serif' }}
@@ -30,7 +23,7 @@ export default function Footer() {
             </p>
             {/* Social icons */}
             <div className="flex gap-3 mt-1">
-              {[Globe, Share2, Mail].map((Icon, i) => (
+              {socialIcons.map((Icon, i) => (
                 <button
                   key={i}
                   className="w-9 h-9 rounded-xl flex items-center justify-center transition-opacity hover:opacity-80"
@@ -43,52 +36,46 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Courses column */}
-          <div className="flex flex-col pl-10 gap-4">
-            <h4 className="text-white text-xs font-bold tracking-widest uppercase">
-              Courses
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              {courses.map((c) => (
-                <li key={c}>
-                  <a
-                    href="#"
-                    className="text-white text-sm hover:text-white transition-colors"
-                  >
-                    {c}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Center columns - Equally spaced footer links */}
+          <div className="flex gap-8 sm:gap-12 lg:gap-16 flex-1 justify-center">
+            {
+              Object.entries(footerLinks).map(([section, links]) => (
+                <div key={section} className="flex flex-col gap-4">
+                  <h4 className="text-white text-xs font-bold tracking-widest uppercase">
+                    {section}
+                  </h4>
+                  <ul className="flex flex-col gap-2.5">
+                    {links.map((c) => (
+                      <li key={c}>
+                        <a
+                          href="#"
+                          className="text-white text-sm hover:text-white transition-colors"
+                        >
+                          {c}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
           </div>
 
-          {/* Company column */}
-          <div className="flex flex-col pl-10 gap-4">
-            <h4 className="text-white text-xs font-bold tracking-widest uppercase">
-              Company
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              {company.map((c) => (
-                <li key={c}>
-                  <a
-                    href="#"
-                    className="text-white text-sm hover:text-white transition-colors"
-                  >
-                    {c}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter column */}
-          <div className="flex flex-col gap-4">
-            <h4 className="text-white text-xs font-bold tracking-widest uppercase">
-              News Letter
-            </h4>
-            <p className="text-white text-sm leading-relaxed">
-              Stay updated with Acadaven academic tips and news.
-            </p>
+          {/* Newsletter column - Extreme Right */}
+          <div className="flex flex-col gap-4 shrink-0">
+            {
+              Object.entries(lastSection).map(([section, desc]) => (
+                <div key={section} className="flex flex-col gap-4">
+                  <h4 className="text-white text-xs font-bold tracking-widest uppercase">
+                    {section}
+                  </h4>
+                  <p className="text-white text-sm leading-relaxed max-w-xs">
+                    {desc}
+                  </p>
+                </div>
+              ))
+            }
+            
             <div className="flex items-center gap-2 mt-1">
               <input
                 type="email"

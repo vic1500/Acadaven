@@ -1,27 +1,13 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Steps from './components/Steps'
-import AboutUs from './components/AboutUs'
-import Features from './components/Features'
-import ExamPrep from './components/ExamPrep'
-import Tutors from './components/Tutors'
-import AppDownload from './components/AppDownload'
-import CTA from './components/CTA'
-import Footer from './components/Footer'
+import { Route, Routes } from 'react-router-dom'
+import LandingPage from './pages/LandingPage'
+import WaitlistPage from './pages/WaitlistPage'
 
 export default function App() {
   return (
-    <div className="min-h-screen" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-      <Navbar />
-      <Hero />
-      <Steps />
-      <AboutUs />
-      <Features />
-      <ExamPrep />
-      <Tutors />
-      <AppDownload />
-      <CTA />
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/waitlist" element={<WaitlistPage />} />
+      <Route path="/waitinglist" element={<WaitlistPage />} />
+    </Routes>
   )
 }

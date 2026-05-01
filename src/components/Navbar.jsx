@@ -1,15 +1,8 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 
-export default function Navbar() {
+export default function Navbar({ links, buttons }) {
   const [mobileOpen, setMobileOpen] = useState(false)
-
-  const links = [
-    { label: 'About Us', href: '#about' },
-    { label: 'Features', href: '#features' },
-    { label: 'Exams', href: '#exams' },
-    { label: 'Tutors', href: '#tutors' },
-  ]
 
   return (
     <header className="bg-[#F7F9FC] sticky top-0 z-50">
@@ -39,17 +32,17 @@ export default function Navbar() {
         {/* Desktop actions */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="#"
+            href={buttons[0].href}
             className="text-sm font-semibold text-gray-700 hover:text-green-700 transition-colors px-3 py-2"
           >
-            Login
+            {buttons[0].label}
           </a>
           <a
-            href="#"
+            href={buttons[1].href}
             className="text-sm font-semibold text-white px-5 py-2.5 rounded-full transition-all hover:opacity-90 active:scale-95"
             style={{ backgroundColor: '#1c6b3e' }}
           >
-            Get Started
+            {buttons[1].label}
           </a>
         </div>
 
@@ -77,15 +70,15 @@ export default function Navbar() {
             </a>
           ))}
           <div className="flex gap-3 pt-2">
-            <a href="#" className="text-sm font-semibold text-gray-700 py-2">
-              Login
+            <a href={buttons[0].href} className="text-sm font-semibold text-gray-700 py-2">
+              {buttons[0].label}
             </a>
             <a
-              href="#"
+              href={buttons[1].href}
               className="text-sm font-semibold text-white px-5 py-2.5 rounded-lg"
               style={{ backgroundColor: '#1c6b3e' }}
             >
-              Get Started
+              {buttons[1].label}
             </a>
           </div>
         </div>
